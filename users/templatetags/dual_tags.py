@@ -3,9 +3,12 @@ from django import template
 from django.conf import settings
 register = template.Library()
 
+if not settings.DEBUG:
+    with open ("/etc/config.json") as config_file:
+        config = json.load(config_file)
 
-config = {"GOOGLEADSCLIENT": "_", "GOOGLEANALYTICSID": "_",
-          "PAYPALVALUE": "_"} if settings.DEBUG else settings.config
+else:
+    config = {"GOOGLEADSCLIENT": "_", "GOOGLEANALYTICSID": "_", "PAYPALVALUE": "_"}
 
 my_site = "http://127.0.0.1:8000" if settings.DEBUG else "https://" + \
     settings.ALLOWED_HOSTS[0]
