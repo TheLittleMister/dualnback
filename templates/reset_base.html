@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/icon.png' %}"/>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+
+  </head>
+
+  <body>
+
+    <div class="container-reset">
+
+      <div class="clock">
+        <div class="hour hour-spin">
+          <div class="white"></div>
+          <div class="dark"></div>
+        </div>
+      </div>
+
+      {% block content %}{% endblock %}
+    </div>
+
+  </body>
+
+</html>

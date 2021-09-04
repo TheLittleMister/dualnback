@@ -1,0 +1,71 @@
+/************* DARK MODE **************/
+
+html,
+option,
+body {
+	background-color: #1c2128;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+
+	color: #bdb7af;
+}
+
+select,
+option,
+input,
+button {
+	border-bottom: 1.5px solid #736b5e;
+	color: #bdb7af;
+}
+
+.panel,
+.square {
+	border-color: #766d61;
+}
+
+::-webkit-scrollbar {
+	background-color: #202324;
+	color: #aba499;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: #181a1b;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #454a4d;
+}
+
+::selection {
+	background-color: #004daa !important;
+	color: #e8e6e3 !important;
+}
+
+path {
+	fill: #bdb7af;
+}
+
+.modal-content {
+	background-color: #1c2128;
+}
+
+.loader {
+	border: 5px solid #1c2128;
+}
+
+.loader {
+	border: 5px solid #1c2128;
+	border-radius: 50%;
+	border-top: 5px solid #e7b616;
+	width: 25px;
+	height: 25px;
+	-webkit-animation: spin 0.5s linear infinite; /* Safari */
+	animation: spin 0.5s linear infinite;
+
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.dropdown-content {
+	background-color: #1c2128;
+}
