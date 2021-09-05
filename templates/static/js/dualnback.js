@@ -22,7 +22,6 @@ const totalElement = document.querySelector(".total");
 const csrfElement = document.querySelector("#id_csrf_token_input");
 
 // Game State
-let trialsCounter = 0;
 let interval;
 let activeGame = false;
 let taskInterval;
@@ -67,7 +66,7 @@ const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min
 // const getAlternativeScore = (TP, TN, FP, FN) => (((TP + TN) / (TP + TN + FP + FN)) * 100).toFixed(2);
 const getScore = (TP, FP, FN) => (TP ? ((TP / (TP + FP + FN)) * 100).toFixed(2) : FP || FN ? 0.0 : 100.0);
 
-const stopGame = function (n) {
+const stopGame = function (n, counter) {
 	/* 
 		This function sets the active game status to false, 
 		resets game status and clear interval, 
@@ -85,19 +84,19 @@ const stopGame = function (n) {
 	hour.classList.remove("hour-spin");
 
 	// Show Score
-	const spatialScore = trialsCounter && getScore(spatialTP, spatialFP, spatialFN);
-	const auditoryScore = trialsCounter && getScore(auditoryTP, auditoryFP, auditoryFN);
+	const spatialScore = counter && getScore(spatialTP, spatialFP, spatialFN);
+	const auditoryScore = counter && getScore(auditoryTP, auditoryFP, auditoryFN);
 	spatialElement.textContent = spatialScore;
 	auditoryElement.textContent = auditoryScore;
 	const totalScore = [spatialScore, auditoryScore].reduce((acc, item, index, arr) => acc + item / arr.length, 0).toFixed(2);
 	totalElement.textContent = totalScore;
-	trialsElement.textContent = trialsCounter;
+	trialsElement.textContent = counter;
 	scoreTitle.classList.add("blink");
 
 	// Allow trials input
 	trialsInput.disabled = false;
 
-	if (trialsCounter >= n * 20) {
+	if (counter >= n * 20) {
 		// Send Score to Back-End
 		$.ajax({
 			type: "POST",
@@ -107,7 +106,7 @@ const stopGame = function (n) {
 			},
 			data: {
 				n: n,
-				trials: trialsCounter,
+				trials: counter,
 				spatial: spatialScore,
 				auditory: auditoryScore,
 				total: totalScore,
@@ -134,7 +133,7 @@ const startGame = function (currentBack) {
 	[auditoryTP, auditoryTN, auditoryFP, auditoryFN] = [0, 0, 0, 0];
 
 	// Set Active Game and Trials Counter to 0
-	trialsCounter = 0;
+	let trialsCounter = 0;
 	activeGame = true;
 
 	// Preparing UI
@@ -176,7 +175,7 @@ const startGame = function (currentBack) {
 		[spatialMatch, spatialInput, auditoryMatch, auditoryInput] = [false, false, false, false];
 
 		// Stop the game if the number of trials is reached
-		if (trialsCounter >= currentTrials) stopGame(currentBack);
+		if (trialsCounter >= currentTrials || !activeGame) stopGame(currentBack, trialsCounter);
 
 		if (activeGame) {
 			/*

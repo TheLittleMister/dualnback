@@ -86,7 +86,7 @@ const pressBtn = (e) => {
 		if (activeGame) {
 			if (code === "KeyQ") {
 				key.style.backgroundColor = "#444";
-				stopGame();
+				activeGame = false;
 			} else if (code === "KeyA") {
 				spatialInput = true;
 
