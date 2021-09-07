@@ -145,3 +145,9 @@ media
 
 # Static
 /static/
+
+# GitHub
+.github
+
+# Copy
+COPYING.txt
