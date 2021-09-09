@@ -155,7 +155,7 @@
               </div>
               <div>
                 <p>
-                The set is taken into account if it has at least <strong><em>N * 20</em></strong> trials.
+                The set is taken into account if it is NOT practice and it has at least <strong><em>N * 20</em></strong> trials.
                 <br><br>
                 <h4>e.g:</h4>
                 <ul>
@@ -212,7 +212,10 @@
           </div>
           <h2>
             <span class="n-back-input">2</span><span class="yellow">-</span>Back</h2>
-          <button id="KeyS">S: START</button>
+          <div class="play">
+            <button id="KeyS">S: START</button>
+            <button id="KeyP">P: PRACTICE</button>
+          </div>
         </div>
 
         <div class="game-card">
@@ -224,7 +227,15 @@
             </form>
             <button id="KeyQ">Q: STOP</button>
           </h2>
-
+          <div class="practice-div">
+            <div class="practice-span">
+              <span class="practice-spatial"></span>
+            </div>
+            <div class="practice-span">
+              <span class="practice-auditory"></span>
+            </div>
+            <br>
+          </div>
           <div class="panel">
             <div class="row-1">
               <div class="square circle-1"></div>
@@ -297,7 +308,7 @@
         <div class="howto">
           <h2>How to Play</h2>
           <p>If the given stimulus presented is same as any of the
-            <strong>n</strong>
+            <strong>N</strong>
             previous:</p>
           <ul class="controls">
             <li>Press '<strong>A</strong>' or

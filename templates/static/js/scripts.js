@@ -1,10 +1,5 @@
 "use strict";
 
-// DARK MODE VARIABLES
-let darkMode = false;
-const switchMode = document.querySelector(".switch-checkbox");
-const slider = document.querySelector(".slider");
-
 // MODAL VARIABLES
 const signupModal = document.querySelector(".sign-up");
 const signupBtn = document.querySelector(".sign-up-button");
@@ -34,7 +29,7 @@ const csrfInput = dynamicForm.querySelector("input");
 
 // GENERAL VARIABLES
 const arrows = [...document.querySelectorAll(".up"), ...document.querySelectorAll(".down")];
-const codes = ["KeyA", "KeyL", "KeyQ", "KeyS", "task-up", "task-down", 1, 3];
+const codes = ["KeyA", "KeyL", "KeyQ", "KeyS", "KeyP", "task-up", "task-down", 1, 3];
 const buttons = document.querySelectorAll("button");
 
 // DARK MODE FUNCTIONS AND EVENT LISTENERS
@@ -97,7 +92,7 @@ const pressBtn = (e) => {
 
 				if (auditoryMatch) key.style.backgroundColor = "green";
 				else key.style.backgroundColor = "darkred";
-			} else codes.slice(0, 4).includes(code) && (key.style.backgroundColor = "#444");
+			} else codes.slice(0, 5).includes(code) && (key.style.backgroundColor = "#444");
 		} else {
 			if (code === "task-up") {
 				nBackInput.textContent = Number(nBackInput.textContent) > 0 && Number(nBackInput.textContent) < 100 ? Number(nBackInput.textContent) + 1 : 1;
@@ -120,7 +115,8 @@ const pressBtn = (e) => {
 			}
 
 			if (code === "KeyS") startGame(Number(nBackInput.textContent) > 0 && Number(nBackInput.textContent) < 101 ? Number(nBackInput.textContent) : 1);
-			codes.slice(0, 4).includes(code) && (key.style.backgroundColor = "#444");
+			if (code === "KeyP") startGame(Number(nBackInput.textContent) > 0 && Number(nBackInput.textContent) < 19 ? Number(nBackInput.textContent) : 1, true);
+			codes.slice(0, 5).includes(code) && (key.style.backgroundColor = "#444");
 		}
 	}
 };
