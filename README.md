@@ -36,7 +36,7 @@ Front-End: **Vanilla JS**
  
 6. Migrations and Run server:
    * Inside the project folder (Project root):  
-      * 1. Make Database migrations: `python manage.py makemigrations`
+      * 1. Make Database migrations: `python manage.py makemigrations users`
       * 2. Migrate: `python manage.py migrate`
       * 3. Run server: `python manage.py runserver`
       * 4. If you want to change server port: `python manage.py runserver <your port>` *e.g* `python manage.py runserver 8080`
