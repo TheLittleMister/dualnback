@@ -624,7 +624,7 @@ td {
 
 @keyframes show-practice {
 	0% {
-		height: 0px;
+		height: 19px;
 		opacity: 0;
 	}
 
@@ -641,13 +641,12 @@ td {
 	}
 
 	100% {
-		height: 0px;
+		height: 19px;
 		opacity: 0;
 	}
 }
 
 .practice-div-show {
-	height: 0px;
 	animation-name: show-practice;
 	animation-duration: 1s;
 	animation-fill-mode: forwards;

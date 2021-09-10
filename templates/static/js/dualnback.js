@@ -67,14 +67,14 @@ const spatialMap = new Map([
 ]);
 
 const sounds = {
-	h: new Howl({ src: [`static/sounds/h.wav`] }),
-	j: new Howl({ src: [`static/sounds/j.wav`] }),
-	k: new Howl({ src: [`static/sounds/k.wav`] }),
-	l: new Howl({ src: [`static/sounds/l.wav`] }),
-	q: new Howl({ src: [`static/sounds/q.wav`] }),
-	r: new Howl({ src: [`static/sounds/r.wav`] }),
-	s: new Howl({ src: [`static/sounds/s.wav`] }),
-	t: new Howl({ src: [`static/sounds/t.wav`] }),
+	h: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/h.wav`] }),
+	j: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/j.wav`] }),
+	k: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/k.wav`] }),
+	l: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/l.wav`] }),
+	q: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/q.wav`] }),
+	r: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/r.wav`] }),
+	s: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/s.wav`] }),
+	t: new Howl({ preload: true, autoplay: false, html5: true, buffer: true, src: [`static/sounds/t.wav`] }),
 };
 
 // GAME FUNCTIONS AND EVENT LISTENERS
