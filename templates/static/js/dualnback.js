@@ -233,6 +233,9 @@ const startGame = function (currentBack, practice = false) {
 
 	// Start Game
 	interval = setInterval(() => {
+		// Remove hour-spin in order to avoid duplication
+		hour.classList.remove("hour-spin");
+
 		// Remove Spatial Stimuli after 1.5s
 		setTimeout(() => circle && (circle.style.backgroundColor = "transparent"), 1500);
 
@@ -302,6 +305,10 @@ const startGame = function (currentBack, practice = false) {
 			// Update Trials Counter
 			trialsCounter++;
 			dualTask.innerHTML = `${trialsCounter} /`;
+
+			// Add hour-spin and remove after 2900ms (Firefox fix)
+			hour.classList.add("hour-spin");
+			setTimeout(() => hour.classList.contains("hour-spin") && hour.classList.remove("hour-spin"), 2900);
 		}
 	}, 3000);
 };

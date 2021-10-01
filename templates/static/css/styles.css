@@ -20,8 +20,8 @@ body {
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
 
-	color: #444444;
-	font-family: monospace, sans-serif;
+	color: #444;
+	font-family: "Inter", sans-serif;
 	height: 100%;
 
 	-webkit-user-select: none;
@@ -390,7 +390,7 @@ button {
 	padding: 8px;
 	font-weight: bold;
 	font-size: 15px;
-	font-family: monospace, sans-serif;
+	font-family: "Inter", sans-serif;
 	border-radius: 15px;
 	letter-spacing: 1px;
 	cursor: pointer;
@@ -428,7 +428,7 @@ input {
 	background-color: transparent;
 	color: #444;
 	font-weight: bold;
-	font-family: monospace, sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 1em;
 }
 

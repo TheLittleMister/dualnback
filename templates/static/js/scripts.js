@@ -211,11 +211,11 @@ dynamicBtns.forEach((item, index, arr) => {
 					const dynamicLabel = document.querySelector(".dynamic-form")?.querySelectorAll("label");
 					if (dynamicLabel[0]) dynamicLabel[0].innerHTML = "Username/Email :";
 					if (dynamicLabel[1]) dynamicLabel[1].innerHTML = "Password :";
+					afterFunc("dynamic-submit-button", "dynamic-loader-div");
 				})
 				.catch((error) => {
 					location.reload();
 				});
-			afterFunc("dynamic-submit-button", "dynamic-loader-div");
 		}
 
 		if (e.target.classList.contains("my-account")) {
@@ -227,11 +227,11 @@ dynamicBtns.forEach((item, index, arr) => {
 					myDynamicForm.innerHTML = response.form;
 					myDynamicForm.insertAdjacentHTML("beforeend", `<a href="${mySite}/change-password/">Change Password</a>`);
 					h2Dynamic.innerHTML = `<a style="font-size: x-small; color: crimson; float: left;" href="${mySite}/delete/">[Delete]</a><p>Account</p>`;
+					afterFunc("dynamic-submit-button", "dynamic-loader-div");
 				})
 				.catch((error) => {
 					location.reload();
 				});
-			afterFunc("dynamic-submit-button", "dynamic-loader-div");
 		}
 
 		if (e.target.classList.contains("statistics")) statisticsCheckButton.click();
