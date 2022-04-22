@@ -1,5 +1,5 @@
 asgiref==3.4.1
-Django==3.2.12
+Django==3.2.13
 django-cleanup==5.2.0
 gunicorn==20.1.0
 psycopg2-binary==2.9.1
