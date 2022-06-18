@@ -48,25 +48,42 @@ def register(request):
             result = json.loads(response.read().decode())
             """ End reCAPTCHA validation """
 
-            if not result["success"]:
+            if result["success"]:
+                user = form.save()
+                user.email = str(BaseUserManager.normalize_email(user.email)).lower()
+                user.save()
+
+                refresh = RefreshToken.for_user(user)
+
+                response = {
+                    "username": user.username,
+                    "email": user.email,
+                    "joined": user.date_joined,
+                    "tokens": {
+                        "refresh": str(refresh),
+                        "access": str(refresh.access_token),
+                    },
+                }
+
+            else:
                 response["errors"] += ["Invalid reCAPTCHA. Please try again."]
-                return Response(response)
 
-        user = form.save()
-        user.email = str(BaseUserManager.normalize_email(user.email)).lower()
-        user.save()
+        else:
+            user = form.save()
+            user.email = str(BaseUserManager.normalize_email(user.email)).lower()
+            user.save()
 
-        refresh = RefreshToken.for_user(user)
+            refresh = RefreshToken.for_user(user)
 
-        response = {
-            "username": user.username,
-            "email": user.email,
-            "joined": user.date_joined,
-            "tokens": {
-                "refresh": str(refresh),
-                "access": str(refresh.access_token),
-            },
-        }
+            response = {
+                "username": user.username,
+                "email": user.email,
+                "joined": user.date_joined,
+                "tokens": {
+                    "refresh": str(refresh),
+                    "access": str(refresh.access_token),
+                },
+            }
 
     else:
         response["errors"] += getFormErrors(form)

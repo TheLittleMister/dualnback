@@ -8,7 +8,10 @@ import {
   colorScheme,
 } from "../../../../../utils/utils";
 
+import { useNavigate } from "react-router-dom";
+
 const DeleteAccountForm: React.FC = () => {
+  const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
   const [messages, setMessages] = useState<string[]>([]);
@@ -45,7 +48,10 @@ const DeleteAccountForm: React.FC = () => {
     if (data.errors && data.errors.length > 0) {
       setMessages(data.errors);
       setLoading(false);
-    } else logOut(authCtx!);
+    } else {
+      logOut(authCtx!);
+      navigate("/", { replace: true });
+    }
   };
 
   return (
