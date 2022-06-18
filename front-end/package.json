@@ -18,7 +18,8 @@
     "react-google-recaptcha": "^2.1.0",
     "react-router-dom": "^6.3.0",
     "typescript": "^4.6.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "nth-check": ">=2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "nth-check": ">=2.0.1",
     "react-scripts": "^5.0.1",
     "@types/react-google-recaptcha": "^2.1.5"
   }

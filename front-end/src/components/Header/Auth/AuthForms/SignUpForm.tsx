@@ -88,10 +88,12 @@ const SignUpForm: React.FC = () => {
       <span className="helptext">
         Enter the same password as before, for verification.
       </span>
-      <ReCAPTCHA
-        sitekey="6LdIujwcAAAAAIqCihjyv-GXmgMO4IeOIrTg-iGI"
-        theme={"dark"}
-      />
+      <div className="g-recaptcha">
+        <ReCAPTCHA
+          sitekey="6LdIujwcAAAAAIqCihjyv-GXmgMO4IeOIrTg-iGI"
+          theme={"dark"}
+        />
+      </div>
     </Form>
   );
 };
