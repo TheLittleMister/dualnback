@@ -125,7 +125,7 @@ def password_reset_token_created(
                 reverse("password_reset:reset-password-confirm")
             ),
             reset_password_token.key,
-        ),
+        ).replace("api/", ""),
     }
 
     # render email text
