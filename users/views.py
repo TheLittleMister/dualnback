@@ -49,7 +49,7 @@ def register(request):
             """ End reCAPTCHA validation """
 
             if not result["success"]:
-                response["errors"].append("Invalid reCAPTCHA. Please try again.")
+                response["errors"] += ["Invalid reCAPTCHA. Please try again."]
                 return Response(response)
 
         user = form.save()
