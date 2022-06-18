@@ -34,21 +34,45 @@ def register(request):
 
     if form.is_valid():
 
-        if not settings.DEBUG:
-            """Begin reCAPTCHA validation"""
-            recaptcha_response = request.data.get("g-recaptcha-response")
-            url = "https://www.google.com/recaptcha/api/siteverify"
-            values = {
-                "secret": settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                "response": recaptcha_response,
-            }
-            data = urllib.parse.urlencode(values).encode()
-            req = urllib.request.Request(url, data=data)
-            response = urllib.request.urlopen(req)
-            result = json.loads(response.read().decode())
-            """ End reCAPTCHA validation """
+        try:
 
-            if result["success"]:
+            if not settings.DEBUG:
+                """Begin reCAPTCHA validation"""
+                recaptcha_response = request.data.get("g-recaptcha-response")
+                url = "https://www.google.com/recaptcha/api/siteverify"
+                values = {
+                    "secret": settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                    "response": recaptcha_response,
+                }
+                data = urllib.parse.urlencode(values).encode()
+                req = urllib.request.Request(url, data=data)
+                response = urllib.request.urlopen(req)
+                result = json.loads(response.read().decode())
+                """ End reCAPTCHA validation """
+
+                if result["success"]:
+                    user = form.save()
+                    user.email = str(
+                        BaseUserManager.normalize_email(user.email)
+                    ).lower()
+                    user.save()
+
+                    refresh = RefreshToken.for_user(user)
+
+                    response = {
+                        "username": user.username,
+                        "email": user.email,
+                        "joined": user.date_joined,
+                        "tokens": {
+                            "refresh": str(refresh),
+                            "access": str(refresh.access_token),
+                        },
+                    }
+
+                else:
+                    response["errors"] += ["Invalid reCAPTCHA. Please try again."]
+
+            else:
                 user = form.save()
                 user.email = str(BaseUserManager.normalize_email(user.email)).lower()
                 user.save()
@@ -65,25 +89,8 @@ def register(request):
                     },
                 }
 
-            else:
-                response["errors"] += ["Invalid reCAPTCHA. Please try again."]
-
-        else:
-            user = form.save()
-            user.email = str(BaseUserManager.normalize_email(user.email)).lower()
-            user.save()
-
-            refresh = RefreshToken.for_user(user)
-
-            response = {
-                "username": user.username,
-                "email": user.email,
-                "joined": user.date_joined,
-                "tokens": {
-                    "refresh": str(refresh),
-                    "access": str(refresh.access_token),
-                },
-            }
+        except Exception as e:
+            response["errors"] += [str(e)]
 
     else:
         response["errors"] += getFormErrors(form)
