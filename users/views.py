@@ -34,63 +34,44 @@ def register(request):
 
     if form.is_valid():
 
-        try:
+        if not settings.DEBUG:
+            """Begin reCAPTCHA validation"""
+            recaptcha_response = request.data.get("g-recaptcha-response")
 
-            if not settings.DEBUG:
-                """Begin reCAPTCHA validation"""
-                recaptcha_response = request.data.get("g-recaptcha-response")
-                url = "https://www.google.com/recaptcha/api/siteverify"
-                values = {
-                    "secret": settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                    "response": recaptcha_response,
-                }
-                data = urllib.parse.urlencode(values).encode()
-                req = urllib.request.Request(url, data=data)
-                response = urllib.request.urlopen(req)
-                result = json.loads(response.read().decode())
-                """ End reCAPTCHA validation """
+            if not recaptcha_response:
+                response["errors"] += ["Are you a robot?"]
+                return Response(response)
 
-                if result["success"]:
-                    user = form.save()
-                    user.email = str(
-                        BaseUserManager.normalize_email(user.email)
-                    ).lower()
-                    user.save()
+            url = "https://www.google.com/recaptcha/api/siteverify"
+            values = {
+                "secret": settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                "response": recaptcha_response,
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req = urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            """ End reCAPTCHA validation """
 
-                    refresh = RefreshToken.for_user(user)
+            if not result["success"]:
+                response["errors"] += ["Invalid reCAPTCHA. Please try again."]
+                return Response(response)
 
-                    response = {
-                        "username": user.username,
-                        "email": user.email,
-                        "joined": user.date_joined,
-                        "tokens": {
-                            "refresh": str(refresh),
-                            "access": str(refresh.access_token),
-                        },
-                    }
+        user = form.save()
+        user.email = str(BaseUserManager.normalize_email(user.email)).lower()
+        user.save()
 
-                else:
-                    response["errors"] += ["Invalid reCAPTCHA. Please try again."]
+        refresh = RefreshToken.for_user(user)
 
-            else:
-                user = form.save()
-                user.email = str(BaseUserManager.normalize_email(user.email)).lower()
-                user.save()
-
-                refresh = RefreshToken.for_user(user)
-
-                response = {
-                    "username": user.username,
-                    "email": user.email,
-                    "joined": user.date_joined,
-                    "tokens": {
-                        "refresh": str(refresh),
-                        "access": str(refresh.access_token),
-                    },
-                }
-
-        except Exception as e:
-            response["errors"] += [str(e)]
+        response = {
+            "username": user.username,
+            "email": user.email,
+            "joined": user.date_joined,
+            "tokens": {
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+            },
+        }
 
     else:
         response["errors"] += getFormErrors(form)
