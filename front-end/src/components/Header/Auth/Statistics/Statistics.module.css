@@ -1,0 +1,45 @@
+.statistics-div,
+.container {
+  font-size: 1.6rem;
+}
+
+.statistics-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.statistics-info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+.statistics-info table {
+  font-size: 1.6rem;
+  border: 0.1rem solid var(--main-color);
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.statistics-info table th,
+td {
+  border: 0.1rem solid var(--main-color);
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+
+.info-sets {
+  display: flex;
+  justify-content: center;
+}
+
+.eg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}

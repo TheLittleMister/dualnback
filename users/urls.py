@@ -1,24 +1,23 @@
 from django.urls import path
 from .views import *
 
-from django.urls import reverse_lazy
-from django.contrib.auth import views as auth_views
-
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
 
 app_name = "users"
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("login/", login_view, name="login"),
-    path("logout/", logout_view, name="logout"),
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
+    path("register/", register, name="register"),
+    path("login/", login, name="login"),
     path("account/", account, name="account"),
-    path("delete/", delete, name="delete"),
     path("score/", score, name="score"),
     path("statistics/", statistics, name="statistics"),
-
-    path('change-password/', auth_views.PasswordChangeView.as_view(template_name='password_reset_form.html',
-         success_url=reverse_lazy('users:change-password-done')), name="change-password"),
-    path('change-password-done/', auth_views.PasswordChangeDoneView.as_view(
-        template_name='password_reset_done.html'), name="change-password-done"),
-
+    path("change_password/", changePassword, name="change_password"),
+    path("delete_account/", deleteAccount, name="delete_account"),
 ]

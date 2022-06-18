@@ -1,0 +1,65 @@
+/* COLOR VARIABLES */
+:root {
+  --main-bg-color: #1f2329;
+  --main-color: #bdbec0;
+  --yellow: #d7a500;
+  --red: #dc143c;
+  --green: #008000;
+}
+
+/* BASIC RESET */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /*
+    10 / 16 = 0.625
+    1 rem === 10px 
+    1 em === 16px
+  */
+  font-size: 62.5%;
+  font-family: "Inter", sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
+}
+
+body {
+  box-sizing: border-box;
+  /* rem is always measured relative to the document’s root font-size. */
+  /* e.g. padding: 3rem; /* 30px */
+}
+
+@media only screen and (max-width: 26em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (max-width: 21.25em) {
+  html {
+    font-size: 40%;
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-bg-color);
+}
+
+::selection {
+  background-color: var(--main-bg-color) !important;
+  color: var(--main-color) !important;
+}

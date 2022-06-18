@@ -1,0 +1,29 @@
+.keys {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.keys > button > svg {
+  fill: var(--main-color);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.blink {
+  animation: blinker 1s linear 10;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

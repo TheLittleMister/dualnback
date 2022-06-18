@@ -1,0 +1,70 @@
+/* SWITCH DARK MODE */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 6rem;
+  height: 3.4rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.6rem;
+  width: 2.6rem;
+  left: 0.4rem;
+  bottom: 0.4rem;
+  background-color: var(--main-bg-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+
+  box-shadow: inset 0.8rem 0rem var(--yellow),
+    inset 1rem 0rem 1.5rem 0rem var(--main-bg-color);
+  -moz-box-shadow: inset 1.6rem 0rem var(--main-bg-color),
+    inset 0rem 1.6rem 0.1rem 0.1rem var(--main-bg-color);
+}
+
+.input:checked + .slider {
+  background-color: var(--main-bg-color);
+}
+
+.input:focus + .slider {
+  box-shadow: 0 0 0.1rem var(--main-bg-color);
+}
+
+.input:checked + .slider:before {
+  -webkit-transform: translateX(2.6rem);
+  -ms-transform: translateX(2.6rem);
+  transform: translateX(2.6rem);
+
+  box-shadow: inset 10rem 0rem var(--yellow),
+    inset 1rem 0rem 1.5rem 0rem var(--main-bg-color);
+  -moz-box-shadow: inset 1.6rem 0rem var(--main-bg-color),
+    inset 0rem 1.6rem 0.1rem 0.1rem var(--main-bg-color);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 3.4rem;
+  border: 0.1rem solid var(--main-color);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

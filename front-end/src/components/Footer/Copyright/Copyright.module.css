@@ -1,0 +1,11 @@
+.copyright {
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+
+@media only screen and (max-width: 33.25em) {
+  .copyright {
+    grid-column: 1 / -1;
+  }
+}

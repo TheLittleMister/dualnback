@@ -1,0 +1,15 @@
+.information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 39.75em) {
+  .information {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}

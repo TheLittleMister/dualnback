@@ -1,0 +1,11 @@
+.input {
+  border-bottom: 0;
+  width: 12rem;
+}
+
+@media only screen and (max-width: 33.25em) {
+  .donate {
+    grid-row: 1 / 2;
+    grid-column: 2 / -1;
+  }
+}

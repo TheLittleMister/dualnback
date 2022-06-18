@@ -1,0 +1,19 @@
+.social {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+}
+
+.social a:link,
+.social a:visited {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.social path {
+  fill: var(--main-color);
+}

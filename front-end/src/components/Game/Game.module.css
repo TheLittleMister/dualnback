@@ -1,0 +1,26 @@
+.game {
+  display: grid;
+
+  grid-gap: 1rem;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  justify-items: center;
+  align-items: center;
+
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 79em) {
+  .game {
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 39.75em) {
+  .game {
+    grid-template-rows: 0.4fr 1fr 0.5fr;
+    grid-template-columns: 1fr;
+  }
+}

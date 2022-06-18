@@ -1,0 +1,39 @@
+.session-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 33.25em) {
+  .session-buttons {
+    grid-column: 1 / -1;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  background-color: var(--main-bg-color);
+  width: fit-content;
+  border-radius: 1.5rem;
+}
+
+.dropdown button {
+  width: 15rem;
+}
+
+.dropdown > button > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

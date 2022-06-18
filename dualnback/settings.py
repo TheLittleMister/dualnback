@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 from django.core.management.utils import get_random_secret_key
-from pathlib import Path
+from datetime import timedelta
+
+# from pathlib import Path
 import os
 import json
 
@@ -32,54 +34,66 @@ MEDIA_URL = "/media/"
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_random_secret_key() if DEBUG else config.get('SECRET_KEY')
+SECRET_KEY = get_random_secret_key() if DEBUG else config.get("SECRET_KEY")
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] if DEBUG else config.get(
-    'ALLOWED_HOSTS')
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"] if DEBUG else config.get("ALLOWED_HOSTS")
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'users',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_cleanup.apps.CleanupConfig'
+    "users",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_cleanup.apps.CleanupConfig",
+    "rest_framework",
+    "corsheaders",
+    "django_rest_passwordreset",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'dualnback.urls'
+ROOT_URLCONF = "dualnback.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [
+            os.path.join(BASE_DIR, "front-end/build"),
+            os.path.join(BASE_DIR, "templates"),
+        ],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'dualnback.wsgi.application'
+WSGI_APPLICATION = "dualnback.wsgi.application"
 AUTH_USER_MODEL = "users.User"
 
 
@@ -88,9 +102,9 @@ AUTH_USER_MODEL = "users.User"
 
 if DEBUG:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
 
@@ -112,16 +126,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -129,9 +143,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -145,7 +159,10 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/static/")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "front-end/build/static/"),
+    os.path.join(BASE_DIR, "templates/static/"),
+]
 
 # SESSION
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -154,17 +171,17 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 
 # AUTHENTICATION (LOGIN)
-AUTHENTICATION_BACKENDS = ('users.backends.AuthBackend',)
+AUTHENTICATION_BACKENDS = ("users.backends.AuthBackend",)
 
 # AUTO FIELD (DJANGO >= 3.2)
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # LOGIN URL
-LOGIN_URL = '/'
+LOGIN_URL = "/login"
 
 # Google reCAPTCHA
-GOOGLE_RECAPTCHA_SECRET_KEY = '_' if DEBUG else config.get("RECAPTCHA_SECRET")
-GOOGLE_RECAPTCHA_SITE_KEY = '_' if DEBUG else config.get("RECAPTCHA_SITE")
+GOOGLE_RECAPTCHA_SECRET_KEY = "_" if DEBUG else config.get("RECAPTCHA_SECRET")
+GOOGLE_RECAPTCHA_SITE_KEY = "_" if DEBUG else config.get("RECAPTCHA_SITE")
 
 # EMAIL STMP
 
@@ -177,6 +194,7 @@ EMAIL_USE_TLS = True
 SERVER_EMAIL = "_" if DEBUG else config.get("EMAIL_USER")
 DEFAULT_FROM_EMAIL = "_" if DEBUG else config.get("EMAIL_USER")
 
+
 # CSRF
 """
     CSRF is required to make a POST, it is NOT invalid until the data is POSTED.
@@ -184,3 +202,36 @@ DEFAULT_FROM_EMAIL = "_" if DEBUG else config.get("EMAIL_USER")
     When a new CSRF token is generated, all the others remain valid.
 """
 CSRF_COOKIE_SECURE = False if DEBUG else True
+
+# CORS HEADERS
+CORS_ALLOW_ALL_ORIGINS = True if DEBUG else False
+
+
+# SIMPLE JWT
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=12),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "VERIFYING_KEY": None,
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "JWK_URL": None,
+    "LEEWAY": 0,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+    "JTI_CLAIM": "jti",
+    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
+}

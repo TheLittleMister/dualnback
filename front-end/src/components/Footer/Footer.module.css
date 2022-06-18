@@ -1,0 +1,20 @@
+.footer {
+  display: grid;
+
+  grid-gap: 1rem;
+
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  justify-items: center;
+  align-items: center;
+
+  padding: 2rem;
+}
+
+@media only screen and (max-width: 33.25em) {
+  .footer {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}

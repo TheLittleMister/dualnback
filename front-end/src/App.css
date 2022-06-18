@@ -1,0 +1,80 @@
+.yellow {
+  color: var(--yellow);
+}
+
+button {
+  padding: 0.8rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: "Inter", sans-serif;
+  border-radius: 1.5rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+
+  color: inherit;
+  background-color: inherit;
+
+  border: 0.1rem solid var(--main-color);
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:active:not(#KeyA):not(#KeyL),
+.button-active {
+  background-color: var(--main-color);
+  color: var(--main-bg-color);
+}
+
+.button-active > svg {
+  fill: var(--main-bg-color) !important;
+}
+
+select,
+option,
+input {
+  outline: none;
+  border: none;
+  border-bottom: 0.15rem solid var(--main-color);
+  background-color: transparent;
+  color: var(--main-color);
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  font-size: 2.2rem;
+}
+
+.mini-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 1rem;
+}
+
+a > button {
+  color: var(--main-color);
+}
+
+a:link {
+  color: var(--yellow);
+  font-weight: bold;
+}
+
+a:visited {
+  color: var(--yellow);
+  font-weight: bold;
+}
+
+svg {
+  fill: var(--main-color);
+}
+
+/* .g-recaptcha {
+	transform: scale(0.77);
+	-webkit-transform: scale(0.77);
+	transform-origin: 0 0;
+	-webkit-transform-origin: 0 0;
+}
+
+.g-recaptcha > div {
+	width: 200px !important;
+} */

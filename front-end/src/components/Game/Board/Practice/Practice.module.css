@@ -1,0 +1,59 @@
+@keyframes hide {
+  0% {
+    font-size: 2rem;
+    padding: 0.3rem;
+  }
+
+  100% {
+    font-size: 0rem;
+    padding: 0rem;
+  }
+}
+
+@keyframes show {
+  0% {
+    font-size: 0rem;
+    padding: 0rem;
+  }
+
+  100% {
+    font-size: 2rem;
+    padding: 0.3rem;
+  }
+}
+
+.span-hide {
+  padding: 0.3rem;
+  animation-name: hide;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.span-show {
+  padding: 0rem;
+  font-size: 0rem;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.span-normal {
+  padding: 0.3rem;
+  font-size: 2rem;
+}
+
+.practice-span {
+  display: flex;
+  justify-content: center;
+}
+
+.practice-span > table td {
+  border: none;
+  text-align: center;
+}
+
+.green {
+  font-weight: bold;
+  color: var(--green);
+}
