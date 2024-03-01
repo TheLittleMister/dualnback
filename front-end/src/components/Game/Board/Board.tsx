@@ -1,6 +1,6 @@
 import React, {
   useMemo,
-  useEffect,
+  useLayoutEffect,
   useState,
   Dispatch,
   SetStateAction,
@@ -99,7 +99,7 @@ const Board: React.FC<{
   const [trialsCounter, setTrialsCounter] = useState<number>(0);
   const [stopPressed, setStopPressed] = useState<boolean>(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let interval: NodeJS.Timer;
     let trialsCounterInterval: number = 0;
 
