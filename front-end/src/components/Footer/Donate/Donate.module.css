@@ -1,6 +1,5 @@
-.input {
-  border-bottom: 0;
-  width: 12rem;
+.buttonHeart {
+  color: var(--yellow);
 }
 
 @media only screen and (max-width: 33.25em) {
