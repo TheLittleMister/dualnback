@@ -2,6 +2,7 @@ import { AuthContextInterface } from "../context/AuthContext";
 import jwt_decode from "jwt-decode";
 
 export const urlAPI: string = "https://dualn-back.com/api/";
+// export const urlAPI: string = "http://127.0.0.1:8000/api/";
 
 // Get Score
 // const getAlternativeScore = (TP, TN, FP, FN) => (((TP + TN) / (TP + TN + FP + FN)) * 100).toFixed(2);

@@ -10,15 +10,6 @@ const Donate: React.FC = () => {
         target="_blank"
       >
         <input type="hidden" name="hosted_button_id" value="P9NTAKLCA6ZLW" />
-        <input
-          className={classes["input"]}
-          type="image"
-          src="https://i0.wp.com/slca-ctp.org/wp-content/uploads/2016/09/Donate-Button.png"
-          // border="0"
-          name="submit"
-          title="Donate to Dual N-Back"
-          alt="Donate to Dual N-Back"
-        />
         <img
           alt=""
           // border="0"
@@ -26,6 +17,9 @@ const Donate: React.FC = () => {
           width="1"
           height="1"
         />
+        <button>
+          Donate <span className={classes["buttonHeart"]}>&#10084;</span>
+        </button>
       </form>
     </div>
   );
