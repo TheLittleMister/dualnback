@@ -15,6 +15,7 @@ import q from "../../../assets/sounds/q.wav";
 import r from "../../../assets/sounds/r.wav";
 import s from "../../../assets/sounds/s.wav";
 import t from "../../../assets/sounds/t.wav";
+import m from "../../../assets/sounds/m.wav";
 
 import Trials from "./Trials/Trials";
 import Panel from "./Panel/Panel";
@@ -77,6 +78,7 @@ const Board: React.FC<{
       6: new Audio(r),
       7: new Audio(s),
       8: new Audio(t),
+      9: new Audio(m),
     };
   }, []);
 
@@ -273,8 +275,8 @@ const Board: React.FC<{
         if (trialsCounterInterval >= game.trials || !game.active)
           stopGame(trialsCounterInterval, spatialObj, auditoryObj);
         else {
-          const spatialRandomPlace = randomInt(1, 8);
-          const auditoryRandomPlace = randomInt(1, 8);
+          const spatialRandomPlace = randomInt(1, 9);
+          const auditoryRandomPlace = randomInt(1, 9);
 
           // Show Spatial
           setSpatialPlace(spatialRandomPlace);
@@ -365,7 +367,7 @@ const Board: React.FC<{
         spatialMatch={spatialMatch}
         auditoryMatch={auditoryMatch}
       />
-      <Panel activeGame={game.active} spatialPlace={spatialPlace} />
+      <Panel spatialPlace={spatialPlace} />
       <Keys
         activeGame={game.active}
         practiceGame={game.practice}

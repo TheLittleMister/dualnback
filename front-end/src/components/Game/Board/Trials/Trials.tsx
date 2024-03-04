@@ -39,10 +39,20 @@ const Trials: React.FC<{
 
   return (
     <div className={classes["game"]}>
+      <div className={classes["clock"]}>
+        <div
+          className={`${classes["hour"]} ${
+            props.activeGame && classes["hour-spin"]
+          }`}
+        >
+          <div className={classes["white"]}></div>
+          <div className={classes["dark"]}></div>
+        </div>
+      </div>
       <span
         className={props.activeGame ? classes["green-dot"] : classes["red-dot"]}
       ></span>
-      <form action="#">
+      <form action="#" onSubmit={(e: React.FormEvent) => e.preventDefault()}>
         <label htmlFor="trials-input" className={classes["trials"]}>
           {props.trialsCounter} /&nbsp;
         </label>
@@ -52,7 +62,7 @@ const Trials: React.FC<{
           id="trials-input"
           name="quantity"
           min="0"
-          max="9999"
+          max="999"
           value={props.trials}
           className={classes["input"]}
           disabled={props.activeGame ? true : false}

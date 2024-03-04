@@ -38,3 +38,65 @@
 .input {
   max-width: 8.5rem;
 }
+
+/* SPINNING CENTER */
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* TIME */
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10rem;
+
+  border: 0.2rem solid var(--main-color);
+  border-right: 0.2rem solid var(--main-color);
+  border-left: 0.2rem solid var(--yellow);
+}
+
+.hour {
+  display: flex;
+  border-radius: 50%;
+
+  width: 80%;
+  height: 0.24rem;
+
+  background-color: transparent;
+}
+
+.hour-spin {
+  animation: spin 3s linear 0s infinite;
+}
+
+.white {
+  flex: 1;
+  border-radius: 100%;
+  background-color: var(--main-color);
+}
+
+.dark {
+  flex: 1;
+  border-radius: 100%;
+  background-color: var(--main-bg-color);
+}
