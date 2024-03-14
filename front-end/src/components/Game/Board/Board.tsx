@@ -211,11 +211,11 @@ const Board: React.FC<{
 
       if (type === "keypress" || type === "mousedown") {
         if (code === "KeyQ") setStopPressed(true);
-        if (code === "KeyA" || (button === 0 && code === "game")) {
+        if (code === "KeyA" || (button === 0 && code === "playableClicks")) {
           if (game.active) spatialInput = true;
           setSpatialPressed(true);
         }
-        if (code === "KeyL" || (button === 2 && code === "game")) {
+        if (code === "KeyL" || (button === 2 && code === "playableClicks")) {
           if (game.active) auditoryInput = true;
           setAuditoryPressed(true);
         }
@@ -225,10 +225,10 @@ const Board: React.FC<{
             stopGame(trialsCounterInterval, spatialObj, auditoryObj);
           setStopPressed(false);
         }
-        if (code === "KeyA" || (button === 0 && code === "game"))
+        if (code === "KeyA" || (button === 0 && code === "playableClicks"))
           setSpatialPressed(false);
 
-        if (code === "KeyL" || (button === 2 && code === "game"))
+        if (code === "KeyL" || (button === 2 && code === "playableClicks"))
           setAuditoryPressed(false);
       }
     };

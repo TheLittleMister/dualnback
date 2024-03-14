@@ -150,11 +150,11 @@ def score(request):
     requiredTrials = n * 20
 
     if (
-        1 <= n <= 100
+        1 <= n <= 99
         and trials >= requiredTrials
-        and 0 <= spatial <= 100
-        and 0 <= auditory <= 100
-        and 0 <= total <= 100
+        and 0 <= spatial <= 99
+        and 0 <= auditory <= 99
+        and 0 <= total <= 99
     ):
         latestScore = Score.objects.filter(
             user=request.user
@@ -223,8 +223,8 @@ def statistics(request):
 
     if n < 1:
         n = 1
-    elif n > 100:
-        n = 100
+    elif n > 99:
+        n = 99
 
     sets = 160
 

@@ -139,7 +139,7 @@ const Statistics: React.FC = () => {
               value={statsForm.n}
               onChange={nInputFormHandler}
               name="n"
-              maxLength={100}
+              maxLength={99}
               id="nback"
               style={{ width: "6rem" }}
             />
@@ -172,7 +172,6 @@ const Statistics: React.FC = () => {
             />
           </div>
         </Form>
-
         <div className={classes["statistics-info"]}>
           <table>
             <tbody>
@@ -199,19 +198,19 @@ const Statistics: React.FC = () => {
             </tbody>
           </table>
         </div>
-      </div>
-      <div className={classes["info-sets"]}>
-        <div>
-          The set is taken into account if it is NOT practice and it has at
-          least <strong>N &times; 20</strong> trials.
-          <br />
-          <br />
-          <div className={classes["eg"]}>
-            <h4>e.g:</h4>
-            <ul>
-              <li>For 2-Back, the minimum trial count is 40. </li>
-              <li>For 7-Back, the minimum trial count is 140. </li>
-            </ul>
+        <div className={classes["info-sets"]}>
+          <div>
+            The set is taken into account if it is NOT <br /> practice and it
+            has at least <strong>N &times; 20</strong> trials.
+            <br />
+            <br />
+            <div className={classes["eg"]}>
+              <h4>e.g:</h4>
+              <ul>
+                <li>For 2-Back, the minimum trial count is 40. </li>
+                <li>For 7-Back, the minimum trial count is 140. </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

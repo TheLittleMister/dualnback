@@ -70,7 +70,7 @@ const Game: React.FC = () => {
   }, []);
 
   return (
-    <main id="game" className={classes["game"]}>
+    <main id="playableClicks" className={classes["game"]}>
       <Task activeGame={game.active} task={game.task} setGame={setGame} />
       <Board game={game} setGame={setGame} setScore={setScore} />
       <Score score={score} />

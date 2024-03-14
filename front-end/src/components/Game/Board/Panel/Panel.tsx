@@ -6,7 +6,7 @@ const Panel: React.FC<{
   spatialPlace: number;
 }> = (props) => {
   return (
-    <div className={classes["panel"]}>
+    <div id="playableClicks" className={classes["panel"]}>
       <div className={classes["row-1"]}>
         <div
           className={`${classes["circle"]} ${

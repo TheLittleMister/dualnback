@@ -44,7 +44,7 @@ const Score: React.FC<{
       <h2 className="mini-title">Stimulus-Response</h2>
 
       <table className={classes["table"]}>
-        <thead>
+        <thead id="playableClicks">
           <tr>
             <th>{nback}-Back</th>
             <th>Response</th>
@@ -53,7 +53,7 @@ const Score: React.FC<{
             <th>Score</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="playableClicks">
           <tr>
             <th>Spatial</th>
             <td>{spatialObj.TP}</td>
