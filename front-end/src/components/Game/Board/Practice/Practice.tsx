@@ -19,7 +19,7 @@ const Practice: React.FC<{
     [6, "r"],
     [7, "s"],
     [8, "t"],
-    [9, "m"],
+    [9, "g"],
   ]);
 
   const spatialMap = new Map([

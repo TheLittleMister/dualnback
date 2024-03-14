@@ -7,6 +7,8 @@ import React, {
   useContext,
 } from "react";
 
+import { useLocation } from "react-router-dom";
+
 import h from "../../../assets/sounds/h.wav";
 import j from "../../../assets/sounds/j.wav";
 import k from "../../../assets/sounds/k.wav";
@@ -15,7 +17,7 @@ import q from "../../../assets/sounds/q.wav";
 import r from "../../../assets/sounds/r.wav";
 import s from "../../../assets/sounds/s.wav";
 import t from "../../../assets/sounds/t.wav";
-import m from "../../../assets/sounds/m.wav";
+import g from "../../../assets/sounds/g.wav";
 
 import Trials from "./Trials/Trials";
 import Panel from "./Panel/Panel";
@@ -66,6 +68,8 @@ const Board: React.FC<{
     }>
   >;
 }> = ({ game, setGame, setScore }) => {
+  const { pathname } = useLocation();
+
   const sounds: {
     [key: number]: HTMLAudioElement;
   } = useMemo(() => {
@@ -78,7 +82,7 @@ const Board: React.FC<{
       6: new Audio(r),
       7: new Audio(s),
       8: new Audio(t),
-      9: new Audio(m),
+      9: new Audio(g),
     };
   }, []);
 
@@ -203,6 +207,8 @@ const Board: React.FC<{
     };
 
     const eventHandler = (type: string, code: string, button: number) => {
+      if (pathname !== "/") return;
+
       if (type === "keypress" || type === "mousedown") {
         if (code === "KeyQ") setStopPressed(true);
         if (code === "KeyA" || (button === 0 && code === "game")) {
@@ -348,6 +354,7 @@ const Board: React.FC<{
     setScore,
     sounds,
     authCtx,
+    pathname,
   ]);
 
   return (

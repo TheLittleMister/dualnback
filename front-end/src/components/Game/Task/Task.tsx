@@ -6,6 +6,8 @@ import React, {
   useCallback,
 } from "react";
 
+import { useLocation } from "react-router-dom";
+
 import classes from "./Task.module.css";
 
 const Task: React.FC<{
@@ -20,6 +22,8 @@ const Task: React.FC<{
     }>
   >;
 }> = ({ activeGame, task, setGame }) => {
+  const { pathname } = useLocation();
+
   const [startPressed, setStartPressed] = useState<boolean>(false);
   const [practicePressed, setPracticePressed] = useState<boolean>(false);
   const [showPracticeMessage, setShowPracticeMessage] =
@@ -86,17 +90,20 @@ const Task: React.FC<{
 
   useEffect(() => {
     const keyHandler = (e: KeyboardEvent) => {
-      if (e.type === "keypress" && e.code === "KeyS") {
-        setStartPressed(true);
-        startGame();
-      } else if (e.type === "keyup" && e.code === "KeyS")
-        setStartPressed(false);
+      if (pathname !== "/") return;
 
-      if (e.type === "keypress" && e.code === "KeyP") {
-        setPracticePressed(true);
-        practiceGame();
-      } else if (e.type === "keyup" && e.code === "KeyP")
-        setPracticePressed(false);
+      if (e.type === "keypress") {
+        if (e.code === "KeyS") {
+          setStartPressed(true);
+          startGame();
+        } else if (e.code === "KeyP") {
+          setPracticePressed(true);
+          practiceGame();
+        }
+      } else if (e.type === "keyup") {
+        if (e.code === "KeyS") setStartPressed(false);
+        else if (e.code === "KeyP") setPracticePressed(false);
+      }
     };
 
     window.addEventListener("keypress", keyHandler);
@@ -106,7 +113,7 @@ const Task: React.FC<{
       window.removeEventListener("keypress", keyHandler);
       window.removeEventListener("keyup", keyHandler);
     };
-  }, [startGame, practiceGame]);
+  }, [startGame, practiceGame, pathname]);
 
   return (
     <div className={classes["task"]}>
