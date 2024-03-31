@@ -6,7 +6,7 @@ colorama==0.4.4
 colored==1.4.3
 dateutils==0.6.12
 dict-toolbox==2.2.0
-Django==3.2.12
+Django==3.2.25
 django-cleanup==5.2.0
 django-cors-headers==3.13.0
 django-rest-framework-braces==0.3.4
