@@ -19,7 +19,7 @@ const Copyright: React.FC = () => {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.youtube.com/FranklinYulian"
+          href="https://m.youtube.com/FranklinYulian"
         >
           &nbsp;FY
         </a>
