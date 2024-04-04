@@ -7,11 +7,7 @@ Front-End: **React with TypeScript**
 
 # Setup
 
-1. Download and Install Python (https://www.python.org/)
-
-   - _Linux_:  
-      Python 3: `sudo apt install python3-pip python3-dev`  
-      Python 2: `sudo apt install python-pip python-dev`
+1. Download and Install Python 3.8.10 (https://www.python.org/)
 
 2. Create a virtual enviroment.
 
@@ -50,8 +46,8 @@ Front-End: **React with TypeScript**
 7. Migrations and Run server:
 
    - Inside the project folder (Project root):
-     - 1. Make Database migrations: `python manage.py makemigrations users`
-     - 2. Migrate: `python manage.py migrate`
+     - 1. Make Database migrations: `python manage.py makemigrations <app>`
+     - 2. Migrate: `python manage.py migrate <app>`
      - 3. Run server: `python manage.py runserver`
      - 4. If you want to change server port: `python manage.py runserver <your backend port>` _e.g_ `python manage.py runserver 8080`
 
