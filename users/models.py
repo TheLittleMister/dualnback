@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.core.validators import validate_email
 from django.utils.translation import gettext_lazy as _
 
 
@@ -18,8 +19,8 @@ from django_rest_passwordreset.signals import reset_password_token_created
 
 class Manager(BaseUserManager):
     def create_user(self, email, username, password=None):
-        if not email or not username:
-            raise ValueError("Users must have an email and username")
+        if not email or not username or not password:
+            raise ValueError("Users must have an email, username and password")
 
         user = self.model(
             email=self.normalize_email(email),
@@ -31,6 +32,9 @@ class Manager(BaseUserManager):
         return user
 
     def create_superuser(self, email, username, password=None):
+        if not username or not password:
+            raise ValueError("Superusers must have an username and password")
+        
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
@@ -45,9 +49,8 @@ class Manager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    email = models.EmailField(max_length=60, unique=True)
+    email = models.EmailField(max_length=60, validators=[validate_email], unique=True)
     username = models.CharField(
-        _("username"),
         max_length=150,
         unique=True,
         validators=[UnicodeUsernameValidator()],

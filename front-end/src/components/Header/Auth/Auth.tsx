@@ -90,7 +90,7 @@ const Auth: React.FC = () => {
           />
         </Route>
 
-        <Route element={<PrivateRoute redirectPath={"/"} />}>
+        <Route element={<PrivateRoute redirectPath={"/login"} />}>
           <Route
             path="account/*"
             element={
