@@ -152,9 +152,9 @@ def score(request):
     if (
         1 <= n <= 99
         and trials >= requiredTrials
-        and 0 <= spatial <= 99
-        and 0 <= auditory <= 99
-        and 0 <= total <= 99
+        and 0 <= spatial <= 100
+        and 0 <= auditory <= 100
+        and 0 <= total <= 100
     ):
         latestScore = Score.objects.filter(
             user=request.user
