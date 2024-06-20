@@ -107,7 +107,7 @@ class Points(models.Model):
     points = models.FloatField(default=0.0)
 
     class Meta:
-        ordering = ["points"]
+        ordering = ["-points"]
 
 # RESET PASSWORD EMAIL
 

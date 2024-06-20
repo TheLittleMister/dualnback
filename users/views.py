@@ -331,7 +331,7 @@ def leaderboard(request):
     n = int(request.GET.get("n"))
 
     if 1 <= n <= 99:
-        response["points"] = list(Points.objects.filter(n=n, points__gt=0).values("user__username", "points"))[:50]
+        response["points"] = list(Points.objects.filter(n=n, points__gt=0).values("user__username", "points")[:50])
 
     return Response(response)
 
