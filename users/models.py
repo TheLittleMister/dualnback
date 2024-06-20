@@ -100,6 +100,14 @@ class Score(models.Model):
     class Meta:
         ordering = ["-created"]
 
+class Points(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="points")
+    
+    n = models.BigIntegerField(unique=True)
+    points = models.FloatField(default=0.0)
+
+    class Meta:
+        ordering = ["points"]
 
 # RESET PASSWORD EMAIL
 

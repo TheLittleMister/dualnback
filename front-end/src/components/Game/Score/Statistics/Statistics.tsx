@@ -173,7 +173,7 @@ const Statistics: React.FC = () => {
           </div>
         </Form>
         <div className={classes["statistics-info"]}>
-          <table>
+          <table className="table">
             <tbody>
               <tr>
                 <th>N-Back</th>

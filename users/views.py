@@ -15,6 +15,7 @@ from .forms import *
 from .utils import *
 
 # REST FRAMEWORK
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -152,9 +153,9 @@ def score(request):
     if (
         1 <= n <= 99
         and trials >= requiredTrials
-        and 0 <= spatial <= 99
-        and 0 <= auditory <= 99
-        and 0 <= total <= 99
+        and 0 <= spatial <= 100
+        and 0 <= auditory <= 100
+        and 0 <= total <= 100
     ):
         latestScore = Score.objects.filter(
             user=request.user
@@ -311,3 +312,35 @@ def deleteAccount(request):
         request.user.delete()
 
     return Response(response)
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def points(request):
+    task = int(request.GET.get("task"))
+    points_ = 0
+
+    if 1 <= task <= 99:
+        points_ = updatePoints(request.user, task)
+
+    return Response({"points": points_})
+
+@api_view(["GET"])
+def leaderboard(request):
+    response = {"points": list()}
+
+    n = int(request.GET.get("n"))
+
+    if 1 <= n <= 99:
+        response["points"] = list(Points.objects.filter(n=n, points__gt=0).values("user__username", "points"))[:50]
+
+    return Response(response)
+
+@api_view(["GET"])
+def updateLeaderboard(request):
+    n = int(request.GET.get("n"))
+
+    if 1 <= n <= 99:
+        for point in Points.objects.filter(n=n)[:50]:
+            updatePoints(point.user, n)
+
+    return Response({}, status=status.HTTP_200_OK)

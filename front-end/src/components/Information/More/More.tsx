@@ -8,64 +8,21 @@ const More: React.FC = () => {
       <h2>Information</h2>
       <div>
         <p>
-          In
-          <strong> n-back task </strong>
-          you need to remember
-          <strong> n </strong>
-          previous
-          <em> spatial </em>
-          or
-          <em> auditory </em>
-          stimuli.
+          <strong>
+            Dual N<span className="yellow">-</span>Back
+          </strong>{" "}
+          is a memory game requiring you to simultaneously remember the previous
+          N auditory and spatial stimuli targets separately.
         </p>
         <br />
         <p>
-          <strong>N-back </strong>
-          is a<em> memory test </em>
-          where
-          <strong> n </strong>
-          refers on
-          <em>
-            &nbsp;how many
-            <strong> previous stimuli </strong>
-            must be
-            <strong> remembered</strong>
-          </em>
-          .
-        </p>
-
-        <p>
-          <strong>Dual </strong>
-          means that
-          <em>
-            <strong> verbal auditory </strong>
-            stimulus&nbsp;
-          </em>
-          and
-          <em>
-            <strong> spatial visual </strong>
-            stimulus&nbsp;
-          </em>
-          are presented&nbsp;
-          <strong>at the same time</strong>.
+          <strong>N</strong> refers to the number of previous stimuli that must
+          be remembered.
         </p>
         <br />
         <p>
-          <strong>Two </strong>
-          memory tests are ran
-          <em> simultaneously </em>
-          and
-          <strong> n </strong>
-          <em>previous </em>
-          <strong>auditory </strong>
-          and
-          <strong> spatial </strong>
-          targets&nbsp;
-          <em>
-            must be remembered
-            <strong> separately</strong>
-          </em>
-          .&nbsp;
+          <strong>Dual</strong> means that verbal auditory and spatial visual
+          stimuli are presented at the same time.{" "}
           <a
             target="_blank"
             rel="noreferrer"
@@ -74,6 +31,7 @@ const More: React.FC = () => {
             [More]
           </a>
         </p>
+        <br />
       </div>
     </div>
   );

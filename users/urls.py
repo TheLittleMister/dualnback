@@ -18,6 +18,9 @@ urlpatterns = [
     path("account/", account, name="account"),
     path("score/", score, name="score"),
     path("statistics/", statistics, name="statistics"),
+    path("leaderboard/", leaderboard, name="leaderboard"),
+    path("updateLeaderboard/", updateLeaderboard, name="updateLeaderboard"),
+    path("points/", points, name="points"),
     path("change_password/", changePassword, name="change_password"),
     path("delete_account/", deleteAccount, name="delete_account"),
 ]

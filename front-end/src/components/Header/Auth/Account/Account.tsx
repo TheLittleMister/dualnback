@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import AuthContext from "../../../../context/AuthContext";
 import classes from "./Account.module.css";
 
@@ -7,10 +7,16 @@ import AccountForm from "./AccountForms/AccountForm";
 import ChangePasswordForm from "./AccountForms/ChangePasswordForm";
 import DeleteAccountForm from "./AccountForms/DeleteAccountForm";
 
-import { prettyDate } from "../../../../utils/utils";
+import { logOut, prettyDate } from "../../../../utils/utils";
 
 const Content: React.FC = () => {
+  const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut(authCtx!);
+    navigate("/", { replace: true });
+  };
 
   return (
     <div className={classes["account"]}>
@@ -43,6 +49,7 @@ const Content: React.FC = () => {
         <Link to="delete-account/">
           <button>Delete Account</button>
         </Link>
+        <button onClick={handleLogOut}>Log Out</button>
       </div>
     </div>
   );

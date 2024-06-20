@@ -24,6 +24,9 @@
   max-width: 100%;
   border-radius: 1rem;
   padding: 3rem;
+
+  overflow-y: auto;
+  max-height: 85vh;
 }
 
 .content > header {

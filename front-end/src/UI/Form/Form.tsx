@@ -41,7 +41,7 @@ const Form = React.forwardRef<
       )}
       {props.children}
       {props.loading ? (
-        <div className={classes["loader"]}></div>
+        <div className="loader"></div>
       ) : (
         <button ref={ref}>{props.submitText}</button>
       )}

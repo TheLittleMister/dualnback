@@ -1,5 +1,34 @@
 .yellow {
   color: var(--yellow);
+  animation: diceFall 3s 1;
+  animation-fill-mode: forwards;
+  display: inline-block; /* Ensure transform applies correctly */
+}
+
+@keyframes diceFall {
+  0% {
+    transform: translateY(-100rem) rotate(0deg);
+    opacity: 0;
+    color: var(--main-color);
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(2rem) rotate(720deg);
+    color: var(--main-color);
+  }
+  70% {
+    transform: translateY(1rem) rotate(720deg) scale(1.5);
+    color: var(--yellow);
+  }
+  100% {
+    transform: translateY(0) rotate(2520deg) scale(1);
+  }
+}
+
+div {
+  font-size: 1.6rem;
 }
 
 button {
@@ -77,4 +106,46 @@ svg {
 
 .g-recaptcha > div {
   width: 235px !important;
+}
+
+.table {
+  /* border: 0.1rem solid var(--main-color); */
+  /* border-collapse: collapse; */
+  box-shadow: 0rem 0rem 0rem 0.1rem var(--main-color);
+  border-radius: 1.5rem;
+  text-align: center;
+}
+
+.table th,
+tr,
+td {
+  border: 0rem solid var(--main-color) !important;
+  /* border: 0.1rem solid var(--main-color); */
+  /* border-radius: 1.5rem; */
+  padding: 1rem;
+}
+
+/* -------------- LOADING ICON ----------------- */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: block;
+  margin: 1rem auto 1rem auto;
+  border: 0.5rem solid var(--main-bg-color);
+  border-radius: 50%;
+  border-top: 0.5rem solid var(--yellow);
+  width: 3rem;
+  height: 3rem;
+  -webkit-animation: spin 0.45s linear infinite; /* Safari */
+  animation: spin 0.45s linear infinite;
+
+  /* padding: 4rem; */
 }

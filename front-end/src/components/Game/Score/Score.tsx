@@ -1,8 +1,12 @@
 import React from "react";
 
 import classes from "./Score.module.css";
+import { Link, Route, Routes } from "react-router-dom";
+import PrivateRoute from "../../../utils/PrivateRoute";
+import Modal from "../../../UI/Modal/Modal";
+import Statistics from "./Statistics/Statistics";
 
-const Score: React.FC<{
+const Content: React.FC<{
   score: {
     nback: number;
     trials: number;
@@ -41,12 +45,32 @@ const Score: React.FC<{
 
   return (
     <div className={classes["score"]}>
-      <h2 className="mini-title">Stimulus-Response</h2>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          alignItems: "center",
+          padding: "1rem",
+        }}
+      >
+        <h2 className="mini-title">
+          Stimulus<span className="yellow">-</span>Response
+        </h2>
+        <Link to="statistics/">
+          <button style={{ height: "fit-content" }}>
+            Statistics <span className="yellow">&#x2b5c;</span>
+          </button>
+        </Link>
+      </div>
 
-      <table className={classes["table"]}>
+      <table className="table">
         <thead id="playableClicks">
           <tr>
-            <th>{nback}-Back</th>
+            <th>
+              {nback}
+              <span className="yellow">-</span>Back
+            </th>
             <th>Response</th>
             <th>No Response</th>
             <th>Trials</th>
@@ -80,11 +104,51 @@ const Score: React.FC<{
             <td>{spatialObj.TP + auditoryObj.TP + falsePositives}</td>
             <td>{spatialObj.FN + auditoryObj.FN + trueNegatives}</td>
             <td>{trials}</td>
-            <td>{totalScore}%</td>
+            <td className="yellow">{totalScore}%</td>
           </tr>
         </tbody>
       </table>
     </div>
+  );
+};
+
+const Score: React.FC<{
+  score: {
+    nback: number;
+    trials: number;
+    spatialScore: number;
+    auditoryScore: number;
+    totalScore: number;
+    spatialObj: {
+      TP: number;
+      TN: number;
+      FP: number;
+      FN: number;
+    };
+    auditoryObj: {
+      TP: number;
+      TN: number;
+      FP: number;
+      FN: number;
+    };
+  };
+}> = ({ score }) => {
+  return (
+    <>
+      <Content score={score} />
+      <Routes>
+        <Route element={<PrivateRoute redirectPath={"/login"} />}>
+          <Route
+            path="statistics/"
+            element={
+              <Modal title={"Statistics"} closePath={"/"}>
+                <Statistics />
+              </Modal>
+            }
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
