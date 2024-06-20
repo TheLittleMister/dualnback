@@ -103,7 +103,7 @@ class Score(models.Model):
 class Points(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="points")
     
-    n = models.BigIntegerField(unique=True)
+    n = models.BigIntegerField()
     points = models.FloatField(default=0.0)
 
     class Meta:
