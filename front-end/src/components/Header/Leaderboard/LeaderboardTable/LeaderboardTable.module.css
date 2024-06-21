@@ -15,3 +15,37 @@
     opacity: 0;
   }
 } */
+
+.task {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrows-task {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.arrows-task .up {
+  width: 0;
+  height: 0;
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 3rem solid var(--main-color);
+
+  cursor: pointer;
+}
+
+.arrows-task .down {
+  width: 0;
+  height: 0;
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-top: 3rem solid var(--main-color);
+
+  cursor: pointer;
+}

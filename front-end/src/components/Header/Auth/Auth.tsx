@@ -25,7 +25,7 @@ const Content: React.FC = () => {
               {authCtx?.user.username.length! > 14
                 ? authCtx?.user.username.slice(0, 11) + "..."
                 : authCtx?.user.username}{" "}
-              <span className="yellow">&#x2b98;</span>
+              <span className="yellow">&#x2b9c;</span>
             </button>
           </Link>
         </div>

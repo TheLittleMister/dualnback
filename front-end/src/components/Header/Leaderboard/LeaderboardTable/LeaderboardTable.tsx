@@ -52,14 +52,39 @@ const LeaderboardTable: React.FC<{}> = () => {
     updateLeaderboard();
   }, [n]);
 
-  const nInputFormHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let task = +e.target.value;
+  // const nInputFormHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   let task = +e.target.value;
 
-    if (task < 1) task = 1;
-    else if (task > 99) task = 99;
+  //   if (task < 1) task = 1;
+  //   else if (task > 99) task = 99;
 
-    setN(task);
-    localStorage.setItem("leaderboardForm", JSON.stringify(task));
+  //   setN(task);
+  //   localStorage.setItem("leaderboardForm", JSON.stringify(task));
+  // };
+
+  const upTask = (e: React.MouseEvent<HTMLDivElement>) => {
+    (e.target as HTMLElement).style.borderBottomColor = "var(--yellow)";
+
+    setN((prevN) => {
+      const newState = prevN < 99 ? prevN + 1 : 99;
+      localStorage.setItem("leaderboardForm", JSON.stringify(newState));
+      return newState;
+    });
+  };
+
+  const downTask = (e: React.MouseEvent<HTMLDivElement>) => {
+    (e.target as HTMLElement).style.borderTopColor = "var(--yellow)";
+
+    setN((prevN) => {
+      const newState = prevN > 1 ? prevN - 1 : 1;
+      localStorage.setItem("leaderboardForm", JSON.stringify(newState));
+      return newState;
+    });
+  };
+
+  const arrowMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    (e.target as HTMLElement).style.borderBottomColor = "var(--main-color)";
+    (e.target as HTMLElement).style.borderTopColor = "var(--main-color)";
   };
 
   return (
@@ -67,17 +92,23 @@ const LeaderboardTable: React.FC<{}> = () => {
       {loading ? (
         <div className="loader"></div>
       ) : (
-        <div style={{ textAlign: "center" }}>
-          <label htmlFor="n-back">N:</label>
-          <input
-            type="number"
-            value={n}
-            onChange={nInputFormHandler}
-            name="n"
-            maxLength={99}
-            id="nback"
-            style={{ width: "6rem", textAlign: "center" }}
-          />
+        <div className={classes["task"]}>
+          <div className={classes["arrows-task"]}>
+            <div
+              className={classes["up"]}
+              onMouseDown={upTask}
+              onMouseUp={arrowMouseUp}
+            ></div>
+            <div
+              className={classes["down"]}
+              onMouseDown={downTask}
+              onMouseUp={arrowMouseUp}
+            ></div>
+          </div>
+          <h2 className="mini-title">
+            <span>{n}</span>
+            <span className="yellow">-</span>Back
+          </h2>
         </div>
       )}
 
