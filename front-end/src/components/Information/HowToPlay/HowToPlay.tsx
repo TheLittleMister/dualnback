@@ -14,20 +14,28 @@ const HowToPlay: React.FC = () => {
       <ul>
         <li>
           Press '<strong>A</strong>' or
-          <strong> L-Click </strong>= <em>Spatial</em>
+          <strong>
+            {" "}
+            L<span className="yellow">-</span>Click{" "}
+          </strong>
+          = Spatial
         </li>
         <li>
           Press '<strong>L</strong>' or
-          <strong> R-Click </strong>= <em>Auditory</em>
+          <strong>
+            {" "}
+            R<span className="yellow">-</span>Click{" "}
+          </strong>
+          = Auditory
         </li>
         <li>
-          Press '<strong>S</strong>' = <em>Start</em>
+          Press '<strong>S</strong>' = Start
         </li>
         <li>
-          Press '<strong>P</strong>' = <em>Practice </em>(Max: 12-Back)
+          Press '<strong>P</strong>' = Practice <em>(Max: 12-Back)</em>
         </li>
         <li>
-          Press '<strong>Q</strong>' = <em>Stop</em>
+          Press '<strong>Q</strong>' = Stop
         </li>
       </ul>
     </div>

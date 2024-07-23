@@ -6,22 +6,22 @@ const Copyright: React.FC = () => {
   return (
     <div className={classes["copyright"]}>
       <p className="copyR">
-        Copyright &copy;
-        <span className="year"></span>. All&nbsp;
+        Copyright &copy;&nbsp;
+        <span className="year">{new Date().getFullYear()}</span>. All&nbsp;
         <a
           target="_blank"
           rel="noreferrer"
           href="https://scratch.mit.edu/projects/387535576/"
         >
-          Rights&nbsp;
+          Rights
         </a>
-        Reserved. Powered by
+        &nbsp;Reserved. Powered by&nbsp;
         <a
           target="_blank"
           rel="noreferrer"
           href="https://m.youtube.com/FranklinYulian"
         >
-          &nbsp;FY
+          FY
         </a>
         .
       </p>

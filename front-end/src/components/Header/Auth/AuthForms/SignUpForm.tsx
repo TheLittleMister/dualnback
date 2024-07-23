@@ -34,8 +34,8 @@ const SignUpForm: React.FC = () => {
     const data = await result.json();
     if (!result.ok) throw new Error("Something went wrong! 🍰");
 
-    if (data.errors && data.errors.length > 0) {
-      setMessages(data.errors);
+    if (data.detail || (data.errors && data.errors.length > 0)) {
+      setMessages(data.errors || [data.detail]);
       setLoading(false);
     } else {
       authCtx?.setUser(data);

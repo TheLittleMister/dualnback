@@ -4,10 +4,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 1.5rem;
-
   text-align: center;
-
-  font-size: 1.6rem;
 }
 
 .form ul {
@@ -35,29 +32,4 @@
   padding: 0.2rem;
   color: var(--green);
   fill: none;
-}
-
-/* -------------- LOADING ICON ----------------- */
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loader {
-  display: block;
-  margin: 1rem auto 1rem auto;
-  border: 0.5rem solid var(--main-bg-color);
-  border-radius: 50%;
-  border-top: 0.5rem solid var(--yellow);
-  width: 3rem;
-  height: 3rem;
-  -webkit-animation: spin 0.45s linear infinite; /* Safari */
-  animation: spin 0.45s linear infinite;
-
-  /* padding: 4rem; */
 }

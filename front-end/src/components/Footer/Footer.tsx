@@ -9,9 +9,9 @@ import Donate from "./Donate/Donate";
 const Footer: React.FC = () => {
   return (
     <div className={classes["footer"]}>
-      <Social />
-      <Copyright />
       <Donate />
+      <Copyright />
+      <Social />
     </div>
   );
 };

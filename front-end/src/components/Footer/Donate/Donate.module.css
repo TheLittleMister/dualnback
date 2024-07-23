@@ -1,7 +1,3 @@
-.buttonHeart {
-  color: var(--yellow);
-}
-
 @media only screen and (max-width: 33.25em) {
   .donate {
     grid-row: 1 / 2;

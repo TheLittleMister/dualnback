@@ -56,7 +56,7 @@ const Task: React.FC<{
   }, [activeGame, setGame, task]);
 
   const upTask = (e: React.MouseEvent<HTMLDivElement>) => {
-    (e.target as HTMLElement).style.borderBottomColor = "var(--main-bg-color)";
+    (e.target as HTMLElement).style.borderBottomColor = "var(--yellow)";
     if (!activeGame)
       setGame((prevGame) => {
         const newState = {
@@ -70,7 +70,7 @@ const Task: React.FC<{
   };
 
   const downTask = (e: React.MouseEvent<HTMLDivElement>) => {
-    (e.target as HTMLElement).style.borderTopColor = "var(--main-bg-color)";
+    (e.target as HTMLElement).style.borderTopColor = "var(--yellow)";
     if (!activeGame)
       setGame((prevGame) => {
         const newState = {

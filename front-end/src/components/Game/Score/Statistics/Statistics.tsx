@@ -70,7 +70,7 @@ const Statistics: React.FC = () => {
 
     const data = await result.json();
 
-    if (!result.ok) {
+    if (result.status === 401) {
       const { refreshed } = await refreshToken(authCtx!);
       if (refreshed) statisticsFormHandler(e);
       return;
@@ -173,7 +173,7 @@ const Statistics: React.FC = () => {
           </div>
         </Form>
         <div className={classes["statistics-info"]}>
-          <table>
+          <table className="table">
             <tbody>
               <tr>
                 <th>N-Back</th>

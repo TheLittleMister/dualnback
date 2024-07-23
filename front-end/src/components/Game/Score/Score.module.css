@@ -6,20 +6,6 @@
   }
 }
 
-.table {
-  font-size: 1.6rem;
-  border: 0.1rem solid var(--main-color);
-  border-collapse: collapse;
-  text-align: center;
-}
-
-.table th,
-td {
-  border: 0.1rem solid var(--main-color);
-  border-radius: 1.5rem;
-  padding: 1rem;
-}
-
 .blink {
   animation: blinker 1s linear 10;
 }

@@ -5,6 +5,7 @@ import classes from "./Game.module.css";
 import Task from "./Task/Task";
 import Board from "./Board/Board";
 import Score from "./Score/Score";
+import Points from "./Points/Points";
 
 const Game: React.FC = () => {
   const [game, setGame] = useState<{
@@ -71,7 +72,10 @@ const Game: React.FC = () => {
 
   return (
     <main id="playableClicks" className={classes["game"]}>
-      <Task activeGame={game.active} task={game.task} setGame={setGame} />
+      <div>
+        <Task activeGame={game.active} task={game.task} setGame={setGame} />
+        <Points activeGame={game.active} task={game.task} />
+      </div>
       <Board game={game} setGame={setGame} setScore={setScore} />
       <Score score={score} />
     </main>

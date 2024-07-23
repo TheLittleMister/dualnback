@@ -18,7 +18,7 @@ const Donate: React.FC = () => {
           height="1"
         />
         <button>
-          Donate <span className={classes["buttonHeart"]}>&#10084;</span>
+          Donate <span className="yellow">&#x2764;</span>
         </button>
       </form>
     </div>
