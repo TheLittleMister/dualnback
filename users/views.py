@@ -50,8 +50,8 @@ def register(request):
             }
             data = urllib.parse.urlencode(values).encode()
             req = urllib.request.Request(url, data=data)
-            response = urllib.request.urlopen(req)
-            result = json.loads(response.read().decode())
+            responseHTTP = urllib.request.urlopen(req)
+            result = json.loads(responseHTTP.read().decode())
             """ End reCAPTCHA validation """
 
             if not result["success"]:
